@@ -3,44 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Книжная полка — главная</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- шапка -->
-    <header>
-        <div class="container header-inner">
-            <a class="logo" href="index.html">Книжная полка</a>
-            <nav>
-                <a class="active" href="index.html">Главная</a>
-                <a href="catalog.html">Каталог</a>
-                <a href="#">Корзина</a>
-            </nav>
-        </div>
-    </header>
-
-    <main class="container">
-        <div class="banner">
-            <h1>Книги, которые хочется дочитать</h1>
-            <p>Художественная литература, детективы и фантастика с доставкой.</p>
-            <a class="btn" href="catalog.html">Перейти в каталог</a>
-        </div>
-
-        <form class="subscribe" action="#">
-            <h2>Подписка на рассылку</h2>
-            <p class="hint">Новые поступления раз в неделю, без спама.</p>
-            <input type="email" name="email" placeholder="Введите почту">
-            <button class="btn" type="submit">Подписаться</button>
-        </form>
-    </main>
-
-    <!-- подвал -->
-    <footer>
-        <div class="container">
-            <p>Интернет-магазин «Книжная полка»</p>
-            <p>Тел: +7 (900) 123-45-67</p>
-        </div>
-    </footer>
-
+    <div id="root" style="display: contents"></div>
+    <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
