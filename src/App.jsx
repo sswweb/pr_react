@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Catalog from './pages/Catalog';
 import Product from './pages/Product';
+import NotFound from './pages/NotFound';
 
 export default function App() {
   return (
@@ -14,8 +15,10 @@ export default function App() {
         <Route path="/index.html" element={<Home />} />
         <Route path="/catalog" element={<Catalog />} />
         <Route path="/catalog.html" element={<Catalog />} />
+        <Route path="/product/:id" element={<Product />} />
         <Route path="/product" element={<Product />} />
         <Route path="/product.html" element={<Product />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </>

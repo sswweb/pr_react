@@ -1,46 +1,28 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import BookCard from '../components/BookCard';
-
-const books = [
-  {
-    "image": "/img/book1.svg",
-    "title": "Мастер и Маргарита",
-    "category": "Роман",
-    "price": "590 руб."
-  },
-  {
-    "image": "/img/book2.svg",
-    "title": "Преступление и наказание",
-    "category": "Роман",
-    "price": "450 руб."
-  },
-  {
-    "image": "/img/book3.svg",
-    "title": "Шерлок Холмс",
-    "category": "Детектив",
-    "price": "520 руб."
-  },
-  {
-    "image": "/img/book4.svg",
-    "title": "Убийство в Восточном экспрессе",
-    "category": "Детектив",
-    "price": "480 руб."
-  },
-  {
-    "image": "/img/book5.svg",
-    "title": "1984",
-    "category": "Фантастика",
-    "price": "410 руб."
-  },
-  {
-    "image": "/img/book6.svg",
-    "title": "Солярис",
-    "category": "Фантастика",
-    "price": "390 руб."
-  }
-];
+import Categories from '../components/Categories';
 
 export default function Catalog() {
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function load() {
+      try {
+        setError(null);
+        const res = await fetch("http://localhost:3000/products");
+        if (!res.ok) {
+          throw new Error(`Ошибка ${res.status}: ${res.statusText}`);
+        }
+        const data = await res.json();
+        setProducts(data);
+      } catch (e) {
+        setError(e.message);
+      }
+    }
+    load();
+  }, []);
+
   useEffect(() => { document.title = "Книжная полка — каталог"; }, []);
   return (
     <main className="container">
@@ -57,18 +39,16 @@ export default function Catalog() {
                 </select>
             </label>
 
-            <div className="categories">
-                <span>Категории:</span>
-                <a href="#">Все</a>
-                <a href="#">Романы</a>
-                <a href="#">Детективы</a>
-                <a href="#">Фантастика</a>
-            </div>
+            <Categories />
         </form>
 
+        {error ? <p>Не удалось загрузить товары: {error}</p> : products.length === 0 ? (
+            <p>Товары не найдены</p>
+        ) : (
         <div className="cards">
-            {books.map((book) => <BookCard key={book.image} book={book} />)}
+            {products.map((book) => <BookCard key={book.id} book={book} />)}
         </div>
+        )}
     </main>
   );
 }

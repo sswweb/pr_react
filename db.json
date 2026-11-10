@@ -1,0 +1,85 @@
+{
+  "$schema": "./node_modules/json-server/schema.json",
+  "posts": [
+    { "id": "1", "title": "a title", "views": 100 },
+    { "id": "2", "title": "another title", "views": 200 }
+  ],
+  "comments": [
+    { "id": "1", "text": "a comment about post 1", "postId": "1" },
+    { "id": "2", "text": "another comment about post 1", "postId": "1" }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "categories": [
+    { "id": "1", "title": "Электроника" },
+    { "id": "2", "title": "Одежда" },
+    { "id": "3", "title": "Дом" }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "title": "Наушники беспроводные",
+      "description": "Беспроводные наушники с активным шумоподавлением и до 30 часов работы от одного заряда.",
+      "price": 7990,
+      "categoryId": "1",
+      "image": "https://avatars.mds.yandex.net/i?id=ef9abf39c61aff0756371649fa366cc2615e83c5-12421933-images-thumbs&n=13"
+    },
+    {
+      "id": "2",
+      "title": "Смартфон 6.5\"",
+      "description": "Смартфон с AMOLED-экраном 120 Гц, тройной камерой 50 Мп и батареей 5000 мАч.",
+      "price": 34990,
+      "categoryId": "1",
+      "image": "https://avatars.mds.yandex.net/get-mpic/13695166/2a000001994dbf0282de7b582c1237cd7d1b/orig"
+    },
+    {
+      "id": "3",
+      "title": "Ноутбук 14\"",
+      "description": "Лёгкий ноутбук для работы и учёбы: 16 ГБ ОЗУ, SSD 512 ГБ, автономность до 12 часов.",
+      "price": 62990,
+      "categoryId": "1",
+      "image": "https://avatars.mds.yandex.net/get-mpic/1750207/2a0000018dd6bac3015de589a1cf970af620/orig"
+    },
+    {
+      "id": "4",
+      "title": "Футболка хлопковая",
+      "description": "Базовая футболка из 100% хлопка, свободный крой, не теряет форму после стирок.",
+      "price": 1490,
+      "categoryId": "2",
+      "image": "https://avatars.mds.yandex.net/i?id=e30d1957f53b1a548e30caa45f0f0bc090aa2af4-5875570-images-thumbs&n=13"
+    },
+    {
+      "id": "5",
+      "title": "Джинсы прямые",
+      "description": "Классические прямые джинсы из плотного денима, универсальный тёмно-синий цвет.",
+      "price": 3990,
+      "categoryId": "2",
+      "image": "https://basket-19.wbbasket.ru/vol3138/part313816/313816063/images/big/1.webp"
+    },
+    {
+      "id": "6",
+      "title": "Кроссовки беговые",
+      "description": "Лёгкие беговые кроссовки с амортизирующей подошвой и дышащим верхом.",
+      "price": 5490,
+      "categoryId": "2",
+      "image": "https://basket-34.wbbasket.ru/vol7151/part715188/715188333/images/big/1.webp"
+    },
+    {
+      "id": "7",
+      "title": "Кофеварка рожковая",
+      "description": "Рожковая кофеварка на 15 бар, готовит эспрессо и капучино, съёмный резервуар 1.5 л.",
+      "price": 12990,
+      "categoryId": "3",
+      "image": "https://cdn.vseinstrumenti.ru/images/goods/tovary-dlya-ofisa-i-doma/bytovaya-tehnika/15600754/2400x1600/176522380.jpg"
+    },
+    {
+      "id": "8",
+      "title": "Настольная лампа",
+      "description": "Настольная лампа с регулировкой яркости и цветовой температуры, USB-порт для зарядки.",
+      "price": 2490,
+      "categoryId": "3",
+      "image": "https://hoff.ru/upload/hoff_resize/hoff-images/318/813/1/27851908cf25dbfe810d33c711b589c4.jpg/1500x1000_85.webp"
+    }
+  ]
+}
