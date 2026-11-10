@@ -1,10 +1,15 @@
 import { useEffect, useState } from 'react';
 import BookCard from '../components/BookCard';
 import Categories from '../components/Categories';
+import Search from '../components/Search';
+import Sort from '../components/Sort';
 
 export default function Catalog() {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
+  const [search, setSearch] = useState("");
+  const [selectedCategoryId, setSelectedCategoryId] = useState(null);
+  const [sort, setSort] = useState("");
 
   useEffect(() => {
     async function load() {
@@ -24,29 +29,31 @@ export default function Catalog() {
   }, []);
 
   useEffect(() => { document.title = "Книжная полка — каталог"; }, []);
+
+  const filteredProduct = products
+    .filter((p) => p.title.toLowerCase().trim().includes(search.toLowerCase().trim()))
+    .filter((p) => p.categoryId === selectedCategoryId || selectedCategoryId === null);
+
+  const sorting = (products) => {
+    if (!sort) return products;
+    return [...products].sort((a, b) => sort === 'asc' ? a.price - b.price : b.price - a.price);
+  };
+
   return (
     <main className="container">
         <h1 className="page-title">Каталог</h1>
 
-        <form className="toolbar" action="#">
-            <input type="text" name="search" placeholder="Поиск по товарам" />
+        <div className="toolbar">
+            <Search value={search} onChange={setSearch} />
+            <Sort value={sort} onChange={setSort} />
+            <Categories selectedId={selectedCategoryId} onSelect={setSelectedCategoryId} />
+        </div>
 
-            <label>
-                Сортировка:{" "}
-                <select name="sort">
-                    <option value="asc">По цене: дешевле</option>
-                    <option value="desc">По цене: дороже</option>
-                </select>
-            </label>
-
-            <Categories />
-        </form>
-
-        {error ? <p>Не удалось загрузить товары: {error}</p> : products.length === 0 ? (
+        {error ? <p>Не удалось загрузить товары: {error}</p> : filteredProduct.length === 0 ? (
             <p>Товары не найдены</p>
         ) : (
         <div className="cards">
-            {products.map((book) => <BookCard key={book.id} book={book} />)}
+            {sorting(filteredProduct).map((book) => <BookCard key={book.id} book={book} />)}
         </div>
         )}
     </main>

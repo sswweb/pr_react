@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default function Categories() {
+export default function Categories({ selectedId, onSelect }) {
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(null);
 
@@ -28,8 +28,8 @@ export default function Categories() {
   return (
     <div className="categories">
         <span>Категории:</span>
-        <a href="#">Все</a>
-        {categories.map((category) => <a key={category.id} href="#">{category.title}</a>)}
+        <button type="button" className={selectedId === null ? "active" : undefined} onClick={() => onSelect(null)}>Все</button>
+        {categories.map((category) => <button key={category.id} type="button" className={selectedId === category.id ? "active" : undefined} onClick={() => onSelect(category.id)}>{category.title}</button>)}
     </div>
   );
 }

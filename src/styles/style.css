@@ -210,6 +210,19 @@ footer p + p {
     color: #6b6560;
 }
 
+.categories button {
+    border: none;
+    background: none;
+    font: inherit;
+    color: #1a1a1a;
+    cursor: pointer;
+}
+
+.categories button:hover,
+.categories button.active {
+    text-decoration: underline;
+}
+
 .cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
