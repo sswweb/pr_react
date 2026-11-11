@@ -50,7 +50,7 @@ export default function Catalog() {
         </div>
 
         {error ? <p>Не удалось загрузить товары: {error}</p> : filteredProduct.length === 0 ? (
-            <p>Товары не найдены</p>
+            <p>Товаров пока нет</p>
         ) : (
         <div className="cards">
             {sorting(filteredProduct).map((book) => <BookCard key={book.id} book={book} />)}

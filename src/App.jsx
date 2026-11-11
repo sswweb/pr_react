@@ -12,12 +12,9 @@ export default function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/index.html" element={<Home />} />
         <Route path="/catalog" element={<Catalog />} />
-        <Route path="/catalog.html" element={<Catalog />} />
         <Route path="/product/:id" element={<Product />} />
         <Route path="/product" element={<Product />} />
-        <Route path="/product.html" element={<Product />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

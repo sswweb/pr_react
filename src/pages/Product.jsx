@@ -5,7 +5,7 @@ export default function Product() {
   const [product, setProduct] = useState(null);
   const [category, setCategory] = useState(null);
   const [error, setError] = useState(null);
-  const { id = "1" } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     async function getProduct() {
@@ -37,7 +37,7 @@ export default function Product() {
     <main className="container">
         <p className="back"><Link to="/catalog">Назад в каталог</Link></p>
 
-        {error ? <p>Не удалось загрузить товар: {error}</p> : product && (
+        {!id ? <p>Товар не найден</p> : error ? <p>Не удалось загрузить товар: {error}</p> : product && (
         <div className="product">
             <img src={product.image} alt={product.title} />
             <div>
